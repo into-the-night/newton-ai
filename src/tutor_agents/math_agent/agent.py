@@ -1,7 +1,6 @@
 import ast
 
 from google.adk import Agent
-from utils.settings import Config
 from . import prompt
 
 
@@ -12,7 +11,7 @@ def evaluate_ast_node(node):
         raise ValueError("Unsupported node type")
 
 
-def calculator_tool(expression) -> float:
+def calculator_tool(expression: str) -> float:
     """Calculator Tool for evaluating simple mathematical expressions
     
     Args:
@@ -53,8 +52,8 @@ def calculator_tool(expression) -> float:
         raise ValueError(f"Invalid expression: {e}")
 
 
-math_tutor_agent = Agent(
-    model=Config.MODEL_NAME,
+math_agent = Agent(
+    model="gemini-2.0-flash",
     name="math_tutor_agent",
     instruction=prompt.MATH_TUTOR_PROMPT,
     tools=[calculator_tool]

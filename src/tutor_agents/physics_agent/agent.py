@@ -1,11 +1,10 @@
 import json
 
 from google.adk import Agent
-from utils.settings import Config
 from . import prompt
 
 
-def lookup_constants(constant) -> dict:
+def lookup_constants(constant: str) -> dict:
     """Returns values of physics constants
     
     Args:
@@ -32,8 +31,8 @@ def lookup_constants(constant) -> dict:
         }
 
 
-physics_tutor_agent = Agent(
-    model=Config.MODEL_NAME,
+physics_agent = Agent(
+    model="gemini-2.0-flash",
     name="physics_tutor_agent",
     instruction=prompt.PHYSICS_TUTOR_AGENT,
     tools=[lookup_constants]

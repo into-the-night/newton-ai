@@ -2,13 +2,13 @@ from google.adk.agents import LlmAgent
 from google.adk.tools.agent_tool import AgentTool
 
 from . import prompt
-from . import math_agent
-from . import physics_agent
-from utils.settings import Config
+from .math_agent import math_agent
+from .physics_agent import physics_agent
+
 
 master_tutor = LlmAgent(
     name="master_tutor",
-    model=Config.MODEL_NAME,
+    model="gemini-2.0-flash",
     description=(
         "analyzing user queries"
         "assigning subject-specific agents related to the query"
